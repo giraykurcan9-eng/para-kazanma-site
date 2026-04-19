@@ -1,40 +1,69 @@
 export default function App() {
   const posts = [
     {
-      title: "Evde Para Kazanmanın 5 Yolu",
-      desc: "Sıfır sermaye ile internetten gelir elde etme yöntemleri.",
+      title: "Evde Para Kazanmanın 5 Gerçekçi Yolu (2026)",
+      desc: "Sıfır sermaye ile internetten gelir elde etmenin güncel yöntemleri.",
     },
     {
-      title: "Freelance Nedir ve Nasıl Başlanır?",
-      desc: "Bionluk ve Fiverr ile ilk işini alma rehberi.",
+      title: "Freelance Nedir? Sıfırdan İlk 1000 TL Nasıl Kazanılır",
+      desc: "Bionluk ve Fiverr üzerinden ilk işini alma stratejisi.",
     },
     {
-      title: "Affiliate Marketing Mantığı",
-      desc: "Ürün tanıtıp komisyon kazanma sistemi nasıl çalışır?",
+      title: "Affiliate Marketing: Ürün Satmadan Para Kazanma",
+      desc: "Komisyon sistemi ile pasif gelir oluşturma rehberi.",
+    },
+    {
+      title: "Telefonla Para Kazanılan 7 Uygulama",
+      desc: "Sadece telefon kullanarak gelir elde edebileceğin yöntemler.",
     },
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
-      <header className="max-w-4xl mx-auto mb-10">
-        <h1 className="text-3xl font-bold">Para Kazanma Rehberi</h1>
-        <p className="text-gray-600 mt-2">
-          İnternetten para kazanma yöntemleri ve başlangıç rehberi
-        </p>
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-white">
+      {/* NAVBAR */}
+      <header className="flex justify-between items-center px-6 py-4 border-b border-gray-700">
+        <h1 className="text-xl font-bold text-green-400">ParaFikir 💰</h1>
+        <nav className="space-x-4 text-sm text-gray-300">
+          <a href="#" className="hover:text-white">Ana Sayfa</a>
+          <a href="#" className="hover:text-white">Blog</a>
+          <a href="#" className="hover:text-white">Hakkında</a>
+        </nav>
       </header>
 
-      <main className="max-w-4xl mx-auto grid gap-4">
+      {/* HERO */}
+      <section className="text-center py-16 px-4">
+        <h2 className="text-4xl font-bold mb-4">
+          İnternetten Para Kazanmanın Gerçek Yolları
+        </h2>
+        <p className="text-gray-300 max-w-xl mx-auto">
+          Sıfırdan başlayarak online gelir elde et, freelance çalış, içerik üret ve finansal özgürlüğe yaklaş.
+        </p>
+        <button className="mt-6 bg-green-500 hover:bg-green-600 px-6 py-2 rounded-full font-semibold">
+          Keşfetmeye Başla
+        </button>
+      </section>
+
+      {/* POSTS */}
+      <main className="max-w-5xl mx-auto px-6 pb-16 grid md:grid-cols-2 gap-6">
         {posts.map((post, i) => (
-          <div key={i} className="bg-white p-4 rounded-xl shadow">
-            <h2 className="text-xl font-semibold">{post.title}</h2>
-            <p className="text-gray-600 mt-1">{post.desc}</p>
-            <button className="mt-3 text-blue-600">Devamını oku</button>
+          <div
+            key={i}
+            className="bg-gray-800 hover:bg-gray-700 transition p-5 rounded-2xl shadow-lg border border-gray-700"
+          >
+            <h2 className="text-lg font-semibold text-green-300">
+              {post.title}
+            </h2>
+            <p className="text-gray-300 mt-2 text-sm">{post.desc}</p>
+            <button className="mt-4 text-green-400 hover:text-green-200 text-sm">
+              Devamını Oku →
+            </button>
           </div>
         ))}
       </main>
 
-      <footer className="max-w-4xl mx-auto mt-10 text-sm text-gray-500">
-        © 2026 Para Kazanma Rehberi - Affiliate içerikler içerir
+      {/* FOOTER */}
+      <footer className="text-center text-gray-500 text-xs py-6 border-t border-gray-700">
+        © 2026 ParaFikir - Tüm hakları saklıdır | Affiliate içerikler içerir
       </footer>
     </div>
   );
