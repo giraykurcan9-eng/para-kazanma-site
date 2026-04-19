@@ -1,70 +1,98 @@
-export default function App() {
-  const posts = [
-    {
-      title: "Evde Para Kazanmanın 5 Gerçekçi Yolu (2026)",
-      desc: "Sıfır sermaye ile internetten gelir elde etmenin güncel yöntemleri.",
-    },
-    {
-      title: "Freelance Nedir? Sıfırdan İlk 1000 TL Nasıl Kazanılır",
-      desc: "Bionluk ve Fiverr üzerinden ilk işini alma stratejisi.",
-    },
-    {
-      title: "Affiliate Marketing: Ürün Satmadan Para Kazanma",
-      desc: "Komisyon sistemi ile pasif gelir oluşturma rehberi.",
-    },
-    {
-      title: "Telefonla Para Kazanılan 7 Uygulama",
-      desc: "Sadece telefon kullanarak gelir elde edebileceğin yöntemler.",
-    },
-  ];
+import { BrowserRouter, Routes, Route, Link, useParams } from "react-router-dom";
 
+const posts = [
+  {
+    id: 1,
+    title: "Evde Para Kazanmanın 5 Gerçekçi Yolu (2026)",
+    content:
+      "Sıfır sermaye ile internetten gelir elde etmenin en güncel yöntemlerini burada öğrenebilirsin..."
+  },
+  {
+    id: 2,
+    title: "Freelance Nedir? Sıfırdan İlk 1000 TL",
+    content:
+      "Freelance çalışarak nasıl para kazanılır, Bionluk ve Fiverr ile nasıl başlanır..."
+  },
+  {
+    id: 3,
+    title: "Affiliate Marketing ile Ürün Satmadan Para Kazanma",
+    content:
+      "Komisyon sistemi ile pasif gelir elde etmenin mantığı ve örnekleri..."
+  },
+  {
+    id: 4,
+    title: "Telefonla Para Kazanılan 7 Uygulama",
+    content:
+      "Sadece telefon kullanarak gelir elde edebileceğin gerçek uygulamalar ve yöntemler..."
+  }
+];
+
+function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-white">
-      {/* NAVBAR */}
-      <header className="flex justify-between items-center px-6 py-4 border-b border-gray-700">
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white">
+      {/* NAV */}
+      <header className="flex justify-between items-center px-6 py-4 border-b border-gray-800">
         <h1 className="text-xl font-bold text-green-400">ParaFikir 💰</h1>
-        <nav className="space-x-4 text-sm text-gray-300">
-          <a href="#" className="hover:text-white">Ana Sayfa</a>
-          <a href="#" className="hover:text-white">Blog</a>
-          <a href="#" className="hover:text-white">Hakkında</a>
+        <nav className="space-x-4 text-sm">
+          <Link to="/" className="hover:text-green-400">Ana Sayfa</Link>
         </nav>
       </header>
 
       {/* HERO */}
-      <section className="text-center py-16 px-4">
-        <h2 className="text-4xl font-bold mb-4">
-          İnternetten Para Kazanmanın Gerçek Yolları
-        </h2>
-        <p className="text-gray-300 max-w-xl mx-auto">
-          Sıfırdan başlayarak online gelir elde et, freelance çalış, içerik üret ve finansal özgürlüğe yaklaş.
+      <section className="text-center py-16">
+        <h2 className="text-4xl font-bold">İnternetten Para Kazanma Rehberi</h2>
+        <p className="text-gray-400 mt-3 max-w-xl mx-auto">
+          Gerçek yöntemler, freelance işler ve online gelir stratejileri
         </p>
-        <button className="mt-6 bg-green-500 hover:bg-green-600 px-6 py-2 rounded-full font-semibold">
-          Keşfetmeye Başla
-        </button>
       </section>
 
       {/* POSTS */}
-      <main className="max-w-5xl mx-auto px-6 pb-16 grid md:grid-cols-2 gap-6">
-        {posts.map((post, i) => (
+      <main className="max-w-5xl mx-auto grid md:grid-cols-2 gap-6 px-6 pb-16">
+        {posts.map((post) => (
           <div
-            key={i}
-            className="bg-gray-800 hover:bg-gray-700 transition p-5 rounded-2xl shadow-lg border border-gray-700"
+            key={post.id}
+            className="bg-gray-800 p-5 rounded-xl border border-gray-700 hover:border-green-500 transition"
           >
-            <h2 className="text-lg font-semibold text-green-300">
+            <h3 className="text-lg font-semibold text-green-300">
               {post.title}
-            </h2>
-            <p className="text-gray-300 mt-2 text-sm">{post.desc}</p>
-            <button className="mt-4 text-green-400 hover:text-green-200 text-sm">
+            </h3>
+            <Link
+              to={`/post/${post.id}`}
+              className="inline-block mt-4 text-green-400 hover:text-green-200"
+            >
               Devamını Oku →
-            </button>
+            </Link>
           </div>
         ))}
       </main>
-
-      {/* FOOTER */}
-      <footer className="text-center text-gray-500 text-xs py-6 border-t border-gray-700">
-        © 2026 ParaFikir - Tüm hakları saklıdır | Affiliate içerikler içerir
-      </footer>
     </div>
+  );
+}
+
+function Post() {
+  const { id } = useParams();
+  const post = posts.find((p) => p.id === Number(id));
+
+  if (!post) {
+    return <div className="text-white p-10">Yazı bulunamadı</div>;
+  }
+
+  return (
+    <div className="min-h-screen bg-black text-white p-6">
+      <Link to="/" className="text-green-400">← Geri</Link>
+      <h1 className="text-3xl font-bold mt-6 text-green-300">{post.title}</h1>
+      <p className="mt-4 text-gray-300 leading-relaxed">{post.content}</p>
+    </div>
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/post/:id" element={<Post />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
