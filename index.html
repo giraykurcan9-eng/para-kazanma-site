@@ -1,0 +1,41 @@
+export default function App() {
+  const posts = [
+    {
+      title: "Evde Para Kazanmanın 5 Yolu",
+      desc: "Sıfır sermaye ile internetten gelir elde etme yöntemleri.",
+    },
+    {
+      title: "Freelance Nedir ve Nasıl Başlanır?",
+      desc: "Bionluk ve Fiverr ile ilk işini alma rehberi.",
+    },
+    {
+      title: "Affiliate Marketing Mantığı",
+      desc: "Ürün tanıtıp komisyon kazanma sistemi nasıl çalışır?",
+    },
+  ];
+
+  return (
+    <div className="min-h-screen bg-gray-50 p-6">
+      <header className="max-w-4xl mx-auto mb-10">
+        <h1 className="text-3xl font-bold">Para Kazanma Rehberi</h1>
+        <p className="text-gray-600 mt-2">
+          İnternetten para kazanma yöntemleri ve başlangıç rehberi
+        </p>
+      </header>
+
+      <main className="max-w-4xl mx-auto grid gap-4">
+        {posts.map((post, i) => (
+          <div key={i} className="bg-white p-4 rounded-xl shadow">
+            <h2 className="text-xl font-semibold">{post.title}</h2>
+            <p className="text-gray-600 mt-1">{post.desc}</p>
+            <button className="mt-3 text-blue-600">Devamını oku</button>
+          </div>
+        ))}
+      </main>
+
+      <footer className="max-w-4xl mx-auto mt-10 text-sm text-gray-500">
+        © 2026 Para Kazanma Rehberi - Affiliate içerikler içerir
+      </footer>
+    </div>
+  );
+}
